@@ -1,94 +1,78 @@
-# 🌌 Cosmic Dice Roller
+# Cosmic Dice Roller
 
-![Cosmic Dice Roller — dark theme](screenshots/dark-mode.png)
+![Cosmic Dice Roller in dark mode](screenshots/dark-mode.png)
 
-### Roll through the cosmos. Let chance decide.
+[Open the website](https://cosmic-dice-roller.vercel.app/)
 
-[🚀 Launch Live Demo](https://cosmic-dice-roller.vercel.app/)
+A browser-based dice roller built for the Programming Club’s
+Software Division induction at IIT Indore.
 
-A space-themed dice rolling website with animated dice,
-cosmic sound effects, and light/dark themes.
+Roll one or two dice, see the total, and review your recent rolls.
+The interface has a space-inspired design with animated dice,
+optional sound effects, and light and dark themes.
+
 ## Features
 
-- Roll one or two six-sided dice.
-- Display dice faces using CSS-drawn dots.
-- Animate dice with opposite-direction spins in two-dice mode.
-- Display individual results and their total.
-- Show the last 10 rolls, newest first.
-- Play synthesized cosmic sound effects with a sound toggle.
-- Switch between light and dark themes.
-- Remember the selected theme using localStorage.
-- Adapt the layout to mobile and desktop screens.
-- Support keyboard controls and reduced-motion preferences.
+- One-die and two-dice modes.
+- Dice faces drawn with CSS.
+- A short spin animation before each result.
+- History of the last 10 rolls.
+- Sound effects with an on/off control.
+- Light and dark themes, with the selected theme saved.
+- Responsive layout and reduced-motion support.
 
-## Screenshots
+## Built with
 
-### Dark Mode
+HTML, CSS and vanilla JavaScript. Sound is generated using the
+Web Audio API, so no audio files are needed. The site is hosted
+on Vercel.
 
-![Dark theme with two dice and roll history](screenshots/dark-mode.png)
+## Run locally
 
-### Light Mode
+Clone the repository:
 
-![Light theme](screenshots/light-mode.png)
+    git clone https://github.com/maltraxis-lang/cosmic-dice-roller.git
 
-## Technologies
+Open the folder and double-click `index.html` to launch the site
+in your browser. No installation or build step is required.
 
-- HTML: page structure and controls.
-- CSS: responsive layout, dice faces, themes and animations.
-- JavaScript: random rolls, interactions and history.
-- Web Audio API: synthesized sound effects.
-- localStorage: theme preference storage.
-- Vercel: website hosting.
+The Google Font needs an internet connection. If it cannot load,
+the site uses a fallback font.
 
-## Run Locally
+## How the dice work
 
-1. Clone the repository:
+Each die gets its value from:
 
-   git clone https://github.com/maltraxis-lang/cosmic-dice-roller.git
+    Math.floor(Math.random() * 6) + 1
 
-2. Open the project folder.
-3. Open index.html in a browser.
+`Math.random()` returns a value from 0 up to, but not including, 1.
+Multiplying by 6, rounding down, and adding 1 gives an integer
+between 1 and 6.
 
-No package installation or build step is required.
-An internet connection is needed to load the Google Font;
-a fallback font is used if it is unavailable.
+Each outcome occupies an equal-sized interval. In two-dice mode,
+the function is called separately for each die. Repeated results
+are normal.
 
-## Project Files
+The result appears after the animation. The roll button is
+disabled while the dice are moving to prevent overlapping rolls.
+This uses pseudorandom numbers suitable for a casual simulation,
+not security-sensitive applications.
 
-- index.html — webpage structure.
-- style.css — styling, themes and animations.
-- script.js — dice logic, sound, controls and history.
-- screenshots/ — website screenshots.
+## Files
 
-## How Randomness Works
+| File | Purpose |
+| --- | --- |
+| `index.html` | Page structure and controls |
+| `style.css` | Layout, dice faces, animations and themes |
+| `script.js` | Rolling logic, history, sound and theme controls |
+| `screenshots/` | Screenshots of the website |
 
-Each die uses:
+## Light theme
 
-Math.floor(Math.random() * 6) + 1
+![Cosmic Dice Roller in light mode](screenshots/light-mode.png)
 
-Math.random() produces a pseudorandom number from 0 inclusive
-to 1 exclusive. Multiplying by 6, rounding down and adding 1
-maps the result to an integer from 1 to 6.
+## Current limitations
 
-The six outcomes correspond to equal-sized intervals, avoiding
-the endpoint bias that using Math.round() would introduce.
-
-In two-dice mode, the random function is called separately for
-each die. Repeated results are possible and expected.
-
-This is a casual simulation, not a cryptographically secure
-random generator.
-
-## Behaviour and Limitations
-
-- Results are revealed after a 900 ms animation delay.
-- Rolling controls are disabled during a roll to prevent overlap.
-- History contains only the latest 10 rolls and resets on refresh.
-- Sound starts off and must be enabled by the user.
-- Theme preferences persist when browser storage is available.
-- Reduced-motion settings disable the dice animation.
-
-## AI Assistance
-
-AI assisted with code generation, styling and debugging.
-The project was developed incrementally with Git commits.
+Roll history resets when the page is refreshed. Only the theme
+preference is saved in browser storage. Sound starts off and
+must be enabled manually.
