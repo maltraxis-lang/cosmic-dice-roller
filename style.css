@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 48px 20px;
+    display: grid;
+    place-items: center;
+    overflow-x: hidden;
+    background:
+        radial-gradient(
+            ellipse at 15% 20%,
+            #512b813d,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            #087f9b2e,
+            transparent 45%
+        ),
+        #060914;
+    color: #edf3ff;
+    font-family: "Manrope", sans-serif;
+}
+
+/* A repeating field of tiny, distant stars */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #ffffff99 99%, transparent),
+        radial-gradient(1px 1px at 90px 110px, #a5bdff88 99%, transparent),
+        radial-gradient(2px 2px at 160px 60px, #ffffff66 99%, transparent),
+        radial-gradient(1px 1px at 60px 180px, #ffffff55 99%, transparent);
+    background-size: 210px 210px;
+    opacity: 0.65;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+}
+
+/* Decorative label above the title */
+main::before {
+    content: "A LITTLE CHANCE. AN INFINITE UNIVERSE.";
+    display: block;
+    margin-bottom: 24px;
+    color: #a8bbde;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    line-height: 1.8;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 1.08;
+    color: #e9edff;
+    background: linear-gradient(120deg, #ffffff, #c5b7ff, #8ce6f5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+main > p:first-of-type {
+    margin: 20px 0 0;
+    color: #a7b3cc;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+}
+
+/* The die: a luminous object against the dark sky */
+#dice {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    width: 160px;
+    height: 160px;
+    margin: 76px auto;
+    border: 1px solid #ffffffb3;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #ffffff, #e2e5ff 60%, #b8dff2);
+    color: #29214e;
+    font-size: 116px;
+    line-height: 1;
+    box-shadow:
+        inset 0 2px 2px #ffffff,
+        inset 0 -8px 18px #7365ac26,
+        0 18px 50px #00000066,
+        0 0 65px #9575ff33,
+        0 0 120px #67dcff1a;
+}
+
+/* A tilted orbit surrounding the die */
+#dice::before {
+    content: "";
+    position: absolute;
+    width: 290px;
+    height: 110px;
+    border: 1px solid #b7a5ff40;
+    border-radius: 50%;
+    transform: rotate(-28deg);
+    pointer-events: none;
+    z-index: -1;
+    box-shadow: 0 0 18px #a78bfa12;
+}
+
+/* A second orbit, at a different angle */
+#dice::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 100px;
+    border: 1px solid #75dfff26;
+    border-radius: 50%;
+    transform: rotate(35deg);
+    pointer-events: none;
+    z-index: -1;
+}
+
+button {
+    width: min(100%, 320px);
+    min-height: 58px;
+    padding: 16px 28px;
+    border: 1px solid #ffffff40;
+    border-radius: 16px;
+    background: linear-gradient(110deg, #c4b5fd, #8cdef0);
+    color: #10152e;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow:
+        0 8px 28px #8b5cf62e,
+        inset 0 1px 0 #ffffff80;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+    box-shadow:
+        0 12px 38px #8b5cf64d,
+        0 0 24px #67e8f926;
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+button:focus-visible {
+    outline: 2px solid #b8f3ff;
+    outline-offset: 6px;
+}
+
+#result {
+    min-height: 28px;
+    margin: 24px 0 0;
+    color: #c8c3e8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 400px) {
+    body {
+        padding: 36px 16px;
+    }
+
+    main::before {
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+    }
+
+    #dice {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+}

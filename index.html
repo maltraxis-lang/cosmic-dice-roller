@@ -3,18 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice roller king</title>
+    <title>Cosmic Dice roller</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
-        <h1>Dice Roller king</h1>
-        <p>roll the dice</p>
+        <h1>Cosmic Dice Roller </h1>
+        <p>Your next move is written in the stars.</p>
 
-        <div id="dice" aria-label="Die showing one">⚀</div>
+        <div class="controls">
+            <label for="dice-count">Number of dice</label>
+            <select id="dice-count">
+                <option value="1">One die</option>
+                <option value="2">Two dice</option>
+            </select>
+        </div>
+
+        <div class="dice-stage">
+            <div id="dice" class="die" role="img"
+                 aria-label="Die showing one"></div>
+
+            <div id="dice-two" class="die" role="img"
+                 aria-label="Die showing one" hidden></div>
+        </div>
 
         <button id="roll-button" type="button">Roll the Dice</button>
-        <p id="result" aria-live="polite">Click the button to roll.</p>
+
+        <p id="result" aria-live="polite">
+            Click the button to roll.
+        </p>
+
+        <section class="history-panel">
+            <h2>Recent rolls</h2>
+            <p id="empty-history">Your cosmic journey starts here.</p>
+            <ol id="history" aria-label="Last 10 rolls, newest first"></ol>
+        </section>
     </main>
 
     <script src="script.js"></script>
